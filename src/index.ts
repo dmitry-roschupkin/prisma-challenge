@@ -35,7 +35,7 @@ async function main(): Promise<void> {
 
 main()
   .then(() => {
-    // Process was fished without any errors
+    // Process was finished without any errors
   })
   .catch((error: unknown): never => {
     // The "logger" wasn't used here, because exception can be thrown in the "logger"

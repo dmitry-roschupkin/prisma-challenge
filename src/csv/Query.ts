@@ -177,7 +177,7 @@ export class Query {
 
     if (value[0] !== '"' || value[valueLength - 1] != '"') {
       throw Error(
-        `Can't parse query. FILTER condition "${filter}" value must must be quoted, e.g. "value".` +
+        `Can't parse query. FILTER condition "${filter}" value must be quoted, e.g. "value".` +
           ` Current parsed value: ${value}`,
       );
     }

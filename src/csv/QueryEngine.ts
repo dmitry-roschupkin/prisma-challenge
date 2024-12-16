@@ -7,7 +7,7 @@ import { logger } from '../Log';
 export class QueryEngine {
   /**
    * This function doing the same as process (processes and filters a table data using query), but it returns
-   * all data at one time which is usefully for unit test.
+   * all data at one time which is useful for unit test.
    *
    * @param table - instance of Table class with loaded data
    * @param query - instance of Query class with parsed query data
@@ -25,7 +25,7 @@ export class QueryEngine {
 
   /**
    * This function processes and filters a table data using query (Prisma Query Language (PQL)).
-   * Also, possible to use AsyncGenerator if we will need to make some special operations with IO or operations
+   * Also, possible to use AsyncGenerator if we will need to make some special operations with I/O or operations
    * that can take a lot of time.
    *
    * @param table - instance of Table class with loaded data
@@ -54,11 +54,10 @@ export class QueryEngine {
   /**
    * This function processes and filters a record. It returns null if record was filtered, otherwise it returns new
    * record with projected columns.
-   * Returns project columns of the record if the record pass the filters, otherwise null.
    *
    * In theory, we can adapt and use this function to process csv files without loading full file to memory.
    * If we do small modification and allow to use by default csv.type.String for all columns (if e.g. types
-   * isn't passed). In this case we can write the code using streams in next way:
+   * isn't passed), then, in this case we can write the code using streams in next way:
    *
    * fs.createReadStream(filepath)
    *   .pipe(csv.parse())
