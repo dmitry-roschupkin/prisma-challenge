@@ -97,9 +97,9 @@ export class Table {
 
   private checkAndAddRow(record: any[]): void {
     const recordLength: number = record.length;
-    const possibleType: number = this._possibleTypes.length;
+    const possibleTypeLength: number = this._possibleTypes.length;
     for (let i: number = 0; i < recordLength; i++) {
-      for (let j: number = this._typeIndexes[i]; j < possibleType; j++) {
+      for (let j: number = this._typeIndexes[i]; j < possibleTypeLength; j++) {
         if (this._possibleTypes[j].checkValue(record[i])) {
           this._typeIndexes[i] = j;
           break;
