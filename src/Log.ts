@@ -20,8 +20,7 @@ log4js.configure({
   categories: {
     default: {
       appenders: ['message', 'error'],
-      // level: config.debug ? 'debug' : 'info',
-      level: config.debug ? 'info' : 'info',
+      level: config.debug ? 'debug' : 'info',
     },
   },
 });
