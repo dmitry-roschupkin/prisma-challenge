@@ -68,7 +68,7 @@ npm run dev
 because in each column can be `string` instead `integer`, even in the last row. That's why I can't make data filtering
 during the loading. I have to load data and detect types during the loading, and only then make a filtering of the
 loaded data. But exactly this way was described in task, so I think that's ok. The data filtering could be done during 
-the loading if e.g. we will change file format and detect types from first line, or e.g. we will use just string types.
+the loading if e.g. we will change file format and detect types from first line, or e.g. we will use just `string` types.
 In both cases we can do something like this:
     ```javascript
     fs.createReadStream(filepath)
@@ -91,7 +91,7 @@ Stress test, tests for large data etc., wasn't done too.
 neck(s) and make some optimization, if it will need, because the code enough structured and readable.
 
 - Not all functions and classes was commented because of time limit, but I have commented classes and public functions
-for Table, Query and QueryEngine as an example using `TSDoc` format. Others can be commented in the same way.
+for `Table`, `Query` and `QueryEngine` as an example using `TSDoc` format. Others can be commented in the same way.
 
 - Maybe that regular expressions, used for parsing PQL (Prisma Query Language) isn't perfect and may be possible to
 make it a little bit better. But it's works, I decided to not spend like a 2,5 hours fot this (a half of estimated
@@ -105,14 +105,14 @@ important. Time was limited +/-, but it's possible to add this in the next itera
 - Any interactive help or other commands with using arguments (like `--help`, `--version` etc.) wasn't done, also 
 because of time limits.
 
-- In classes Query and Table private data wasn't fully hidden from outside modification. 
+- In classes `Query` and `Table` private data wasn't fully hidden from outside modification. 
 I have added modifier readonly to data getters return type, but it's possible to modify data from outside anyway. 
 But this is enough typical situation for typescript.
 
 - ...
 
 ### Adding other data types, filters, ordering ###
-- To add new supported data type possible to make new classes inherited e.g. from BaseType and implements Type 
+- To add new supported data type possible to make new classes inherited e.g. from `BaseType` and implements `Type` 
 interface. Then need to add this class to `Table` `constructor` or pass it to `setPossibleTypes` function in needed
 order. Order is important, see class `TSDoc` description for more details.
 
