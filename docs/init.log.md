@@ -222,3 +222,6 @@ Add next strings to file `package.json` to main section:
   }
 },
 ```
+
+## Init other modules: ##
+npm i csv-parse log4js 
