@@ -1,7 +1,17 @@
 import * as csv from '.';
 import { logger } from '../Log';
 
+/**
+ * Class for processes table data using query
+ */
 export class QueryEngine {
+  /**
+   * This function doing the same as process (processes and filters a table data using query), but it returns
+   * all data at one time which is usefully for unit test.
+   *
+   * @param table
+   * @param query
+   */
   public static processAll(table: csv.Table, query: csv.Query): any[] {
     const recordIterator = this.process(table, query);
 
@@ -13,6 +23,12 @@ export class QueryEngine {
     return allRecords;
   }
 
+  /**
+   * This function processes and filters a table data using query (Prisma Query Language (PQL)).
+   *
+   * @param table
+   * @param query
+   */
   public static *process(table: csv.Table, query: csv.Query): Generator<any[]> {
     logger.debug('QueryEngine: start data processing');
 
@@ -33,6 +49,27 @@ export class QueryEngine {
     logger.debug('QueryEngine: data processed');
   }
 
+  /**
+   * This function processes and filters a record. It returns null if record was filtered, otherwise it returns new
+   * record with projected columns
+   *
+   * In theory, we can adapt and use this function to process csv files without loading full file to memory.
+   * If we do small modification and allow to use by default csv.type.String for all columns (if e.g. types
+   * isn't passed). In this case we can write the code using streams in next way:
+   *
+   * fs.createReadStream(filepath)
+   *   .pipe(csv.parse())
+   *   .pipe(csv.transform((record) => {
+   *     return QueryEngine.processRecord(...)
+   *   }))
+   *   .pipe(csv.stringify())
+   *   .pipe(process.stdout);
+   *
+   * @param record
+   * @param projects
+   * @param filters
+   * @param types
+   */
   public static processRecord(
     record: any[],
     projects: readonly number[],

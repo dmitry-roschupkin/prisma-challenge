@@ -3,6 +3,9 @@ import { parse } from 'csv-parse';
 import * as type from './type';
 import { logger } from '../Log';
 
+/**
+ * Class for loading (including detecting types) and storing scv table data.
+ */
 export class Table {
   private _possibleTypes: type.Type[] = [];
 
@@ -11,10 +14,24 @@ export class Table {
 
   private _data: any[][] = [];
 
+  /**
+   * Constructor
+   *
+   * @param possibleTypes - types which we need to detect and process in the loading csv table.
+   * Types will be processed from left to right.
+   * E.g.: For array [new type.Integer(), new type.String()] - if checking for type integer was successful -
+   * we wouldn't try to check for string. If checking for type integer wasn't successful - we will try to check
+   * for string, etc.
+   */
   constructor(possibleTypes: type.Type[] = [new type.Integer(), new type.String()]) {
     this.setPossibleTypes(possibleTypes);
   }
 
+  /**
+   * @see {@link constructor}
+   *
+   * @param possibleTypes
+   */
   // Possible to make Table "re-useful" with different _types, using next function
   public setPossibleTypes(possibleTypes: type.Type[]): void {
     if (possibleTypes.length === 0) {
@@ -24,14 +41,29 @@ export class Table {
     this._possibleTypes = possibleTypes;
   }
 
+  /**
+   * Getter for data. It was done to split responsibility and move processing code to QueryEngine. Returned result
+   * marked as readonly, but in practise result content can be changed.
+   * No need to change "data" outside, all changes with data have to be in this class.
+   */
   public get data(): readonly any[][] {
     return this._data;
   }
 
+  /**
+   * Getter for types. It was done to split responsibility and move processing code to QueryEngine. Returned result
+   * marked as readonly, but in practise result content can be changed.
+   * No need to change "types" outside, all changes with data have to be in this class.
+   */
   public get types(): readonly type.Type[] {
     return this._types;
   }
 
+  /**
+   * This function load csv table from file to memory, and detect csv column types.
+   *
+   * @param filepath
+   */
   public async load(filepath: string): Promise<boolean> {
     const parser = fs.createReadStream(filepath).pipe(parse({}));
     this._data = [];

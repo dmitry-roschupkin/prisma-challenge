@@ -1,11 +1,17 @@
 import { logger } from '../Log';
 
+/**
+ * Interface for query filters storage.
+ */
 export interface QueryFilter {
   index: number;
   operator: string;
   value: string;
 }
 
+/**
+ * Class for processing and storing Prisma Query Language (PQL) :-) data.
+ */
 export class Query {
   private _projects: number[] = [];
   private _filters: QueryFilter[] = [];
@@ -16,15 +22,30 @@ export class Query {
   private readonly colPrefix: string = 'col';
   private readonly supportedOperators: string[] = ['=', '!=', '<>', '>', '>=', '<', '<='];
 
-  // queryString storing "Prisma Query Language (PQL) :-)" original raw query string
+  /**
+   * Contructor.
+   *
+   * _queryString storing "Prisma Query Language (PQL) :-)" original raw query string
+   * @param _queryString
+   */
   constructor(private _queryString: string) {
     this.parse();
   }
 
+  /**
+   * Getter for projects. It was done to split responsibility and move processing code to QueryEngine. Returned result
+   * marked as readonly, but in practise result content can be changed.
+   * No need to change "projects" outside, all changes with data have to be in this class.
+   */
   public get projects(): readonly number[] {
     return this._projects;
   }
 
+  /**
+   * Getter for filters. It was done to split responsibility and move processing code to QueryEngine. Returned result
+   * marked as readonly, but in practise result content can be changed.
+   * No need to change "filters" outside, all changes with data have to be in this class.
+   */
   public get filters(): readonly QueryFilter[] {
     return this._filters;
   }

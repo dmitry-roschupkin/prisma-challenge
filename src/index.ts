@@ -6,12 +6,20 @@ import * as process from 'node:process';
 
 logger.debug('Application: start');
 
+/**
+ * Print QueryEngine process results to console.
+ *
+ * @param result
+ */
 function printQueryEngineResults(result: Generator<any[]>): void {
   for (const record of result) {
     console.log(record);
   }
 }
 
+/**
+ * Main application function.
+ */
 async function main(): Promise<void> {
   logger.debug('Application: main start');
   const table = new csv.Table();
