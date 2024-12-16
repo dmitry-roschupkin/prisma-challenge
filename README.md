@@ -123,14 +123,14 @@ brackets. Something like: `FILTER f1 and (f2 or f3 of f4)` in this case wi will 
 filter `(f2 or f3 or f4)`. Multiple filter will be applied in the same algorithm as for filter.
 If we complicate more - multiple filter will have a tree of child filters and some of them will be multiple too...
 
-- To implement ordering without implementation of `indexes` - we can:  
-        1. Accumulate result data, and each new founded/filtered record have to be inserted in ordered place in results
-    data. In this case result data will be every time ordered. Complexity from ~Q(n*log(n)) up to ~Q2 (dependent 
-    on data), but in generally it will be quicker then sort full the table and only then make a filtration.  
-        2. We can try to make our own indexes (like `Map<value: string, positionInTable: number>` or own map 
-    implementation). Index will be sorted automatically, and it allows for us to make quick filter and ordering the
-    results. We can use e.g. bisection method to find needed places in sorted index.
-    In this case complexity will be ~Q +/-.
+- To implement ordering without implementation of `indexes` - we can:
+  1. Accumulate result data, and each new founded/filtered record have to be inserted in ordered place in results
+     data. In this case result data will be every time ordered. Complexity from ~Q(n*log(n)) up to ~Q2 (dependent 
+     on data), but in generally it will be quicker then sort full the table and only then make a filtration.
+  2. We can try to make our own indexes (like `Map<value: string, positionInTable: number>` or own map
+     implementation). Index will be sorted automatically, and it allows for us to make quick filter and ordering the
+     results. We can use e.g. bisection method to find needed places in sorted index.
+     In this case complexity will be ~Q +/-.
 
 ### Process extremely large datasets ###
 When we use really extremely large datasets - sometimes we can't even to load full the index in memory. In this case we
