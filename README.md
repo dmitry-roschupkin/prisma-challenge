@@ -91,7 +91,7 @@ Stress test, tests for large data etc., wasn't done too.
 neck(s) and make some optimization, if it will need, because the code enough structured and readable.
 
 - Not all functions and classes was commented because of time limit, but I have commented classes and public functions
-for Table, Query and QueryEngine as an example using TSDoc format. Others can be commented in the same way.
+for Table, Query and QueryEngine as an example using `TSDoc` format. Others can be commented in the same way.
 
 - Maybe that regular expressions, used for parsing PQL (Prisma Query Language) isn't perfect and may be possible to
 make it a little bit better. But it's works, I decided to not spend like a 2,5 hours fot this (a half of estimated
@@ -114,7 +114,7 @@ But this is enough typical situation for typescript.
 ### Adding other data types, filters, ordering ###
 - To add new supported data type possible to make new classes inherited e.g. from BaseType and implements Type 
 interface. Then need to add this class to `Table` `constructor` or pass it to `setPossibleTypes` function in needed
-order. Order is important, see class TSDoc description for more details.
+order. Order is important, see class `TSDoc` description for more details.
 
 - The possibility of many filters using - already implemented, but only using `AND` filters concatenation. Possible to
 implement multiple filter (one filter array with many conditions, each condition will be the same as now). Using
@@ -139,8 +139,8 @@ needed place im memory index, e.g. using bisection method - we will try to use t
 index file... (e.g. jump to center, read block and compare values, then jump to some center of half and read block 
 again and compare values, etc.). Then we have read from index needed records addresses (e.g. byte addresses `from` 
 and `to`) in huge table file, and we can read one by one all needed records...
-Also, we will to work with bytecode, bytes types aligns and will be better to rewrite this e.g. using C++. I know and I
-like modern C++ and I can be helpful with this LOL :-).
+Also, we will to work with bytecode, bytes types aligns and will be better to rewrite this e.g. using `C++`. I know and I
+like modern `C++` and I can be helpful with this LOL :-).
 
 ### Other ideas ###
 - `jest` is very popular for testing but also possible to use other tools, e.g. `Cucumber` or others.
@@ -179,8 +179,8 @@ It's a difficult question and it can ve very subjective. In my opinion one of go
 - Make a tasks/features backlog.
 - Mark feature dependencies (e.g. to implement fast work with large files we need to implement `indexes` firstly, and 
 to implement fast joins we need to implement `indexes` firstly as well).
-- Try to make prioritisation of features by `must be`/`have to be` (e.g. MoSCoW framework).
-- Try to make rough task estimation, just to mark each tasks as Small/Medium/Extra-Large/Extra-Extra-Large
+- Try to make prioritisation of features by `must be`/`have to be` (e.g. `MoSCoW` framework).
+- Try to make rough task estimation, just to mark each tasks as `Smal`l/`Medium`/`Extra-Large`/`Extra-Extra-Large`
 - Try to estimate risk factor that task will take more resources and rework than we are expecting
-- Try to use impact/effort dependency (e.g. RICE framework)
+- Try to use impact/effort dependency (e.g. `RICE` framework)
 And then we will understand how many task we have to do and in what time, and what is the risk factor +/-
