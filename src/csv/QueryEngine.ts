@@ -9,8 +9,8 @@ export class QueryEngine {
    * This function doing the same as process (processes and filters a table data using query), but it returns
    * all data at one time which is usefully for unit test.
    *
-   * @param table
-   * @param query
+   * @param table - instance of Table class with loaded data
+   * @param query - instance of Query class with parsed query data
    */
   public static processAll(table: csv.Table, query: csv.Query): any[] {
     const recordIterator = this.process(table, query);
@@ -25,9 +25,11 @@ export class QueryEngine {
 
   /**
    * This function processes and filters a table data using query (Prisma Query Language (PQL)).
+   * Also, possible to use AsyncGenerator if we will need to make some special operations with IO or operations
+   * that can take a lot of time.
    *
-   * @param table
-   * @param query
+   * @param table - instance of Table class with loaded data
+   * @param query - instance of Query class with parsed query data
    */
   public static *process(table: csv.Table, query: csv.Query): Generator<any[]> {
     logger.debug('QueryEngine: start data processing');
@@ -51,7 +53,8 @@ export class QueryEngine {
 
   /**
    * This function processes and filters a record. It returns null if record was filtered, otherwise it returns new
-   * record with projected columns
+   * record with projected columns.
+   * Returns project columns of the record if the record pass the filters, otherwise null.
    *
    * In theory, we can adapt and use this function to process csv files without loading full file to memory.
    * If we do small modification and allow to use by default csv.type.String for all columns (if e.g. types
@@ -65,10 +68,10 @@ export class QueryEngine {
    *   .pipe(csv.stringify())
    *   .pipe(process.stdout);
    *
-   * @param record
-   * @param projects
-   * @param filters
-   * @param types
+   * @param record - row of csv file
+   * @param projects - list of columns from 'PROJECT' statement
+   * @param filters - filters for filtering record
+   * @param types - types from table, which was detected during the loading
    */
   public static processRecord(
     record: any[],

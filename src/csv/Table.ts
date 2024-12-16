@@ -62,7 +62,7 @@ export class Table {
   /**
    * This function load csv table from file to memory, and detect csv column types.
    *
-   * @param filepath
+   * @param filepath - path to csv file
    */
   public async load(filepath: string): Promise<boolean> {
     const parser = fs.createReadStream(filepath).pipe(parse({}));
