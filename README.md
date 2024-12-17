@@ -113,11 +113,11 @@ make it a little bit better. But it's works, I decided to not spend like a 2,5 h
 time for this job). The regular expression work is localized, and will be easy to update/fix them if more perfect 
 decisions will be found.
 
-- I have added just the most simple interactive interface, but this allows to test application with different files and
-queries without changing the code. Application parameters have to be passed without names and in the strict order from 
-console, and I didn't check `process.argv[2]` for `--`. I haven't done more user-friendly interface, I decided to spend
-time for other things, which I have found more important. Time was limited +/-, but it's possible to add this in the
-next iteration...
+- I have added just the most simple command line interactive interface, but this allows to test application with
+different files and queries without changing the code. Application parameters have to be passed without names and in
+the strict order as command line arguments, and I didn't check `process.argv[2]` for `--`. I haven't done more
+user-friendly interface, I decided to spend time for other things, which I have found more important. Time was
+limited +/-, but it's possible to add this in the next iteration...
 
 - Any interactive help or other commands with using arguments (like `--help`, `--version` etc.) weren't done, also 
 because of time limits.
