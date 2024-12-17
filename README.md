@@ -4,13 +4,6 @@ This project was done as prisma Home Challenge. More details you can read in
 
 ## Run ##
 
-NOTE:
-Now any interactive interface isn't ready.
-To test it with custom files and with custom query - need to make changes directly in the code,
-File `./src/index.ts`, rows: 27 and 30.
-
----
-
 Need to clone the project from repository
 After cloning the project, we need to install dependencies
 
@@ -27,7 +20,11 @@ npm run build
 
 To run project need to run this command:
 ```shell script
-npm run start
+npm run start filePath query
+```
+e.g.
+```shell script
+npm run start ./tests/csv/samples/mixed.csv 'PROJECT col1, col2 FILTER col1 > \"5\"'
 ```
 
 To run tests need to run this command:
@@ -66,9 +63,18 @@ Fix some easy errors in code e.g. formating errors (Not all errors can be fixed 
 npm run lint:fix
 ```
 
-Run watcher/monitor for main project for development:
+Run typescript version of main project directly without compilation to javascript to `./dist` folder:
 ```shell script
-npm run dev
+npm run dev filePath query
+```
+e.g.
+```shell script
+npm run dev ./tests/csv/samples/mixed.csv 'PROJECT col1, col2 FILTER col1 > \"5\"'
+```
+
+Run watcher/monitor for typescript version of main project (without compilation to javascript to `./dist` folder):
+```shell script
+npm run dev:watch filePath query
 ```
 
 ### Report ###
@@ -107,9 +113,11 @@ make it a little bit better. But it's works, I decided to not spend like a 2,5 h
 time for this job). The regular expression work is localized, and will be easy to update/fix them if more perfect 
 decisions will be found.
 
-- I haven't done any interactive interface, even for reading data from console command. But this is enough typical
-tasks, it can be done using `process.argv`, so I decided to spend time for other things, which I have found more
-important. Time was limited +/-, but it's possible to add this in the next iteration...
+- I have added just the most simple interactive interface, but this allows to test application with different files and
+queries without changing the code. Application parameters have to be passed without names and in the strict order from 
+console, and I didn't check `process.argv[2]` for `--`. I haven't done more user-friendly interface, I decided to spend
+time for other things, which I have found more important. Time was limited +/-, but it's possible to add this in the
+next iteration...
 
 - Any interactive help or other commands with using arguments (like `--help`, `--version` etc.) weren't done, also 
 because of time limits.
@@ -171,7 +179,7 @@ implement some `indexes` and `keys` before this).
 - ... 
 
 ### Make this code production-ready ###
-- Need to add interactive interface, e.g. command line.
+- Need to add upgrade interactive command line interface.
 - Need to implement possibility to set some parameters, at least basic, like locale e.g. `En/Fr/Ge/..`,
 separator symbol, quoted/unquoted values, digit format for float e.g. `.` or `,`, date formats...
 - Add possibility to skip first rows.
