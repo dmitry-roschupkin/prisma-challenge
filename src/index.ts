@@ -27,7 +27,7 @@ function printShortHelp() {
   console.log(
     'Please run this application with parameters "file path" and "query"\n' +
       'Examples:\n' +
-      'npm run start ./tests/csv/samples/mixed.csv \'PROJECT col1, col2 FILTER col1 > "5"\'',
+      'npm run start ./tests/csv/samples/mixed.csv \'PROJECT col1, col2 FILTER col1 > \\"5\\"\'',
   );
 }
 
