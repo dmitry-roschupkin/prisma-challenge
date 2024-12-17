@@ -23,9 +23,12 @@ function printQueryEngineResults(result: Generator<any[]>): void {
 async function main(): Promise<void> {
   logger.debug('Application: main start');
   const table = new csv.Table();
+
   await table.load(`${__dirname}/../tests/csv/samples/mixed.csv`);
 
-  const query = new csv.Query('PROJECT col1, col2 FILTER col0 > " z ", col3 > "5"');
+  const query = new csv.Query(
+    'PROJECT col1, col2 FILTER col0 > " z ", col3 > "5"'
+  );
 
   const result = csv.QueryEngine.process(table, query);
   printQueryEngineResults(result);

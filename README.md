@@ -3,6 +3,11 @@ This project was done as prisma Home Challenge. More details you can read in
 `./docs/Prisma Core Take Home Challenge.pdf`
 
 ## Run ##
+
+Now any interactive interface isn't ready.
+To test it with custom files and with custom query - need to make changes directly in the code,
+File `./src/index.ts`, rows: 27 and 30.
+
 After cloning the project, we need to install dependencies
 
 We need to compile the project and at least for this we are needed development dependencies. Run this command to
