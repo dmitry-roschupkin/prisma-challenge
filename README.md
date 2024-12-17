@@ -149,7 +149,6 @@ If we complicate more - multiple filter will have a tree of child filters and so
   2. We can try to make our own indexes (like `Map<value: string, positionInTable: number>` or own map
      implementation). Index will be sorted automatically, and it allows for us to make quick filtering and ordering the
      results. We can use e.g. bisection method to find needed places in sorted index.
-     In this case complexity will be ~Q +/-.
 
 ### Process extremely large datasets ###
 When we use really extremely large datasets - sometimes we can't even load full the index in memory. In this case we
