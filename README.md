@@ -1,8 +1,8 @@
-## About ##
+## About
 This project was done as prisma Home Challenge. More details you can read in
 `./docs/Prisma Core Take Home Challenge.pdf`
 
-## Run ##
+## Run
 
 Need to clone the project from repository
 After cloning the project, we need to install dependencies
@@ -77,8 +77,8 @@ Run watcher/monitor for typescript version of main project (without compilation 
 npm run dev:watch filePath query
 ```
 
-### Report ###
-#### Compromises that were made during development ###
+### Report
+#### Compromises that were made during development
 - Double processing... I can't detect columns types before loading all the data (unless you read the file twice)
 because in each column can be `string` instead of `integer`, even in the last row. That's why I can't make data
 filtering during the loading. I have to load data and detect types during the loading, and only then make a filtering
@@ -130,7 +130,7 @@ But this is enough typical situation for typescript.
 
 - ...
 
-### Adding other data types, filters, ordering ###
+### Adding other data types, filters, ordering
 - To add new supported data types possible to make new classes inherited e.g. from `BaseType` and implements `Type` 
 interface. Then need to add this class to `Table` `constructor` or pass it to the `setPossibleTypes` function in needed
 order. Order is important, see class `TSDoc` description for more details.
@@ -150,7 +150,7 @@ If we complicate more - multiple filter will have a tree of child filters and so
      implementation). Index will be sorted automatically, and it allows for us to make quick filtering and ordering the
      results. We can use e.g. bisection method to find needed places in sorted index.
 
-### Process extremely large datasets ###
+### Process extremely large datasets
 When we use really extremely large datasets - sometimes we can't even load full the index in memory. In this case we
 need to store huge index in storage `HDD/SSD/...` and read index partially, by blocks. The same as we can try to find 
 needed place in memory index, e.g. using bisection method - we will try to use the same method to find needed place in
@@ -160,7 +160,7 @@ and `to`) in huge table file, and we can read one by one all needed records...
 Also, we will work with bytecode, bytes types aligns and will be better to rewrite this e.g. using `C++`. I know and I
 like modern `C++` and I can be helpful with this LOL :-).
 
-### Other ideas ###
+### Other ideas
 - `jest` is very popular for testing but also possible to use other tools, e.g. `Cucumber` or others.
 
 - Possible to make common interface for `Table` and to make adapters for different file types storage and for other
@@ -179,7 +179,7 @@ to add `JOIN`'s (it would be nice to implement some `indexes` and `keys` before 
 
 - ... 
 
-### Make this code production-ready ###
+### Make this code production-ready
 - Need to upgrade interactive command line interface.
 - Need to implement possibility to set some parameters, at least basic, like locale e.g. `En/Fr/Ge/..`,
 separator symbol, quoted/unquoted values, digit format for float e.g. `.` or `,`, date formats...
@@ -192,7 +192,7 @@ possible dependency versions. Set up needed `peerDependencies` etc...
 - Take feedback from first demo users, make conclusions and make first fixes/changes.
 - ...
 
-### What and when we have to implement ###
+### What and when we have to implement
 It's a difficult question and it can be very subjective. In my opinion one of good ways is:
 - Make a tasks/features backlog.
 - Mark feature dependencies (e.g. to implement fast work with large files we need to implement `indexes` firstly, and 

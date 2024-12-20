@@ -1,4 +1,4 @@
-## Environment: ##
+## Environment:
 ```shell
 node -v
 ```
@@ -12,7 +12,7 @@ npm -v
 IDE: WebStorm  
 WebStorm setting `File | Settings | Editor | Code Style` : `Line Separator` set to `LF` (`\n Unix and MacOS`)
 
-## Init `tsconfig` and empty project: ##
+## Init `tsconfig` and empty project:
 ```shell
 npm init -y
 npm i -D typescript @type/node @tsconfig/node20 rimraf
@@ -45,7 +45,7 @@ Add next strings to `package.json` to `scripts` section:
     "start": "node ./dist/index.js"
 ```
 
-## Init `jest`: ##
+## Init `jest`:
 ```shell
 npm i -D jest ts-jest @type/jest
 touch jest.config.js
@@ -84,7 +84,7 @@ Add next strings to `package.json` to `scripts` section:
     "test:watch": "jest --watch"
 ```
 
-## Init `ESLint` and `prettier`: ##
+## Init `ESLint` and `prettier`:
 ```shell
 npm init @eslint/config@latest
 ```
@@ -154,7 +154,7 @@ Choose manual `ESLint` configuration, select installed module and `eslint.config
 Check that prettier plugin installed in IDE (WebStorm: `Plugins sections`) and `prettier` is
 enabled (WebStorm: `File | Settings | Languages & Frameworks | JavaScript | Prettier`)
 
-## Init `ESLint` `jest` plugin: ##
+## Init `ESLint` `jest` plugin:
 This step has to be passed if step `"Init jest"` was passed
 ```shell
 npm i -D eslint-plugin-jest
@@ -176,7 +176,7 @@ Add next strings to file `eslint.config.mjs` (into `export default[...]`):
   },
 ```
 
-## Init env: ##
+## Init env:
 ```shell
 npm i -D dotenv
 ```
@@ -187,7 +187,7 @@ touch .env
 touch .env.example
 ```
 
-## Init `nodemon`: ##
+## Init `nodemon`:
 ```shell
 npm i -D ts-node nodemondotenv nodemon
 touch nodemon.json
@@ -209,7 +209,7 @@ Add next strings to file `package.json` to `scripts` section:
     "dev": "nodemon",
 ```
 
-## Init husky: ##
+## Init husky:
 It can be used to run some hooks locally, to not run jobs on `github`/`gitlab` 
 ```shell
 npm i -D husky
@@ -223,5 +223,5 @@ Add next strings to file `package.json` to main section:
 },
 ```
 
-## Init other modules: ##
+## Init other modules:
 npm i csv-parse log4js 
